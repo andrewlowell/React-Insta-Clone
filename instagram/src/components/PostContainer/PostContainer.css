@@ -1,0 +1,11 @@
+.postContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.postHeader img {
+  border-radius: 50%;
+  max-width: 40px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
