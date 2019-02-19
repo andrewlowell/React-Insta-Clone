@@ -5,18 +5,18 @@ const SearchBar = props => {
   return (
     <div id="searchBar">
       <div className="searchSection">
-        <i class="fab fa-instagram"></i>
+        <i className="fab fa-instagram"></i>
         <span>|</span>
         <span>Instagram</span>
       </div>
       <div className="searchSection">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Search" />
+        <i className="fas fa-search"></i>
+        <input type="text" value={props.searchValue} onChange={props.searchChange} placeholder="Search" />
       </div>
       <div className="searchSection">
-        <i class="far fa-compass"></i>
-        <i class="far fa-heart"></i>
-        <i class="far fa-user"></i>
+        <i className="far fa-compass"></i>
+        <i className="far fa-heart"></i>
+        <i className="far fa-user"></i>
       </div>
     </div>
   );

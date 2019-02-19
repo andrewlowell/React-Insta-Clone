@@ -13,18 +13,25 @@ const PostContainer = props => {
       <img src={props.post.imageUrl} alt=""/>
       <div className="postComments">
         <div className="postButtons">
-        <i class="far fa-heart"></i>
-        <i class="far fa-comment"></i>
+        <i className="far fa-heart"></i>
+        <i className="far fa-comment"></i>
         </div>
         <p>{props.post.likes} likes</p>
-        <CommentSection post={props.post} />
+        <CommentSection post={props.post} commentValue={props.commentValue} addComment={props.addComment} commentChange={props.commentChange} />
       </div>
     </div>
   );
 }
 
-PostContainer.PropTypes = {
-
+PostContainer.propTypes = {
+  post: PropTypes.shape({
+    username: PropTypes.string,
+    thumbnailUrl: PropTypes.string,
+    imageUrl: PropTypes.string,
+    likes: PropTypes.number,
+    timestamp: PropTypes.string,
+    comments: PropTypes.arrayOf(PropTypes.object)
+  })
 };
 
 export default PostContainer;
