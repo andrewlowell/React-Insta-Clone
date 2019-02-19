@@ -1,5 +1,16 @@
 #searchBar {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  overflow: hidden;
+  top: 0;
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
+  background-color: white;
+}
+
+.fab, .fas, .far {
+  font-size: 30px;
+  padding: 5px;
 }

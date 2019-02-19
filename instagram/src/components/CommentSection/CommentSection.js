@@ -1,4 +1,5 @@
 import React from 'react';
+import './CommentSection.css';
 const moment = require('moment');
 
 const CommentSection = props => {

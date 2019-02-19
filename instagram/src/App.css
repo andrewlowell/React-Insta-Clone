@@ -1,4 +1,8 @@
-.App {
-  margin: auto;
-  max-width: 700px;
+body {
+  background-color: #fafafa;
+}
+#postsContainer {
+  margin: 100px auto;
+  max-width: 600px;
+  background-color: #fafafa;
 }

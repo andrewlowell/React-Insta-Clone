@@ -13,7 +13,7 @@ const PostContainer = props => {
       <img src={props.post.imageUrl} alt=""/>
       <div className="postComments">
         <div className="postButtons">
-        <i className="far fa-heart"></i>
+        <i className="far fa-heart" onClick={(e) => props.like(props.post, e)}></i>
         <i className="far fa-comment"></i>
         </div>
         <p>{props.post.likes} likes</p>

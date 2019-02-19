@@ -1,5 +1,6 @@
 const dummyData = [
   {
+    liked: false,
     display: true,
     username: "philzcoffee",
     thumbnailUrl:
@@ -26,6 +27,7 @@ const dummyData = [
     ]
   },
   {
+    liked: false,
     display: true,
     username: "fortnite",
     thumbnailUrl:
@@ -58,6 +60,7 @@ const dummyData = [
     ]
   },
   {
+    liked: false,
     display: true,
     username: "playhearthstone",
     thumbnailUrl:

@@ -41,16 +41,36 @@ class App extends Component {
 
   addComment = (post, event) => {
     event.preventDefault();
-    let withNewComment = {
-      username: post.username,
-      thumbnailUrl: post.thumbnailUrl,
-      imageUrl: post.imageUrl,
-      likes: post.likes,
-      timestamp: post.timestamp,
-      comments: post.comments.push({username: 'joe_bob_mcgee', text: this.state.commentValue})
-    };
+      // comments: post.comments.push({username: 'joe_bob_mcgee', text: this.state.commentValue})
     this.setState({
-      dummyData: [...this.state.dummyData, withNewComment],
+      dummyData: this.state.dummyData.map(e => {
+        if (e.timestamp === post.timestamp) {
+          const newPost = e;
+          newPost.comments.push({username: 'joe_bob_mcgee', text: this.state.commentValue});
+          return newPost;
+        }
+        else {
+          return e;
+        }
+      }),
+      commentValue: ''
+    });
+  }
+
+  like = (post, e) => {
+    e.preventDefault();
+    this.setState({
+      dummyData: this.state.dummyData.map(e => {
+        if (e.timestamp === post.timestamp) {
+          const newPost = e;
+          newPost.likes = newPost.liked ? newPost.likes - 1 : newPost.likes + 1;
+          newPost.liked = !newPost.liked;
+          return newPost;
+        }
+        else {
+          return e;
+        }
+      }),
       commentValue: ''
     });
   }
@@ -59,11 +79,13 @@ class App extends Component {
     return (
       <div className="App">
         <SearchBar searchChange={this.searchChange} searchValue={this.state.searchValue} />
-        {this.state.dummyData.map((item, index) => {
-          if (item.display) {
-            return <PostContainer post={item} key={index} commentValue={this.state.commentValue} commentChange={this.commentChange} addComment={this.addComment} />;
-          }
-        })}
+        <div id="postsContainer">
+          {this.state.dummyData.map((item, index) => {
+            if (item.display) {
+              return <PostContainer post={item} key={index} commentValue={this.state.commentValue} commentChange={this.commentChange} addComment={this.addComment} like={this.like} />;
+            }
+          })}
+        </div>
       </div>
     );
   }
