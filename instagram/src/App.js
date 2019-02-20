@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
 import dummyData from './dummy-data';
-import SearchBar from './components/SearchBar/SearchBar';
-import PostContainer from './components/PostContainer/PostContainer';
+import PostsPage from './components/PostContainer/PostsPage';
+import authenticate from './authentication/Authenticate';
+import Login from './components/Login/Login';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loggedIn: false,
+      loginValue: '',
       searchValue: '',
       commentValue: '',
-      dummyData: dummyData
+      dummyData: []
     };
+  }
+
+  componentDidMount() {
+    this.setState({dummyData: dummyData});
   }
 
   searchChange = e => {
@@ -46,7 +53,7 @@ class App extends Component {
       dummyData: this.state.dummyData.map(e => {
         if (e.timestamp === post.timestamp) {
           const newPost = e;
-          newPost.comments.push({username: 'joe_bob_mcgee', text: this.state.commentValue});
+          newPost.comments.push({username: localStorage.getItem('user'), text: this.state.commentValue});
           return newPost;
         }
         else {
@@ -78,17 +85,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SearchBar searchChange={this.searchChange} searchValue={this.state.searchValue} />
-        <div id="postsContainer">
-          {this.state.dummyData.map((item, index) => {
-            if (item.display) {
-              return <PostContainer post={item} key={index} commentValue={this.state.commentValue} commentChange={this.commentChange} addComment={this.addComment} like={this.like} />;
-            }
-          })}
-        </div>
+        <PostsPage
+          dummyData={this.state.dummyData}
+          searchChange={this.searchChange}
+          searchValue={this.state.searchValue}
+          commentValue={this.state.commentValue}
+          commentChange={this.commentChange}
+          addComment={this.addComment}
+          like={this.like}
+        />
       </div>
     );
   }
 }
 
-export default App;
+export default authenticate(App)(Login);
