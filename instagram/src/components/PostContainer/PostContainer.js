@@ -2,13 +2,23 @@ import React from 'react';
 import './PostContainer.css';
 import CommentSection from '../CommentSection/CommentSection';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import StyledSpan from '../../styled-components/StyledSpan';
+
+const StyledPostContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  border: 1px solid gray;
+  border-radius: 3px;
+`;
 
 const PostContainer = props => {
   return (
-    <div className="postContainer">
+    <StyledPostContainer>
       <div className="postHeader">
         <img src={props.post.thumbnailUrl} alt=""/>
-        <span>{props.post.username}</span>
+        <StyledSpan fontWeight='800'>{props.post.username}</StyledSpan>
       </div>
       <img src={props.post.imageUrl} alt=""/>
       <div className="postComments">
@@ -19,7 +29,7 @@ const PostContainer = props => {
         <p>{props.post.likes} likes</p>
         <CommentSection post={props.post} commentValue={props.commentValue} addComment={props.addComment} commentChange={props.commentChange} />
       </div>
-    </div>
+    </StyledPostContainer>
   );
 }
 

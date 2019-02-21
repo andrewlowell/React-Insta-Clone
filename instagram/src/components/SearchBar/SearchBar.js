@@ -1,10 +1,29 @@
 import React from 'react';
-import './SearchBar.css';
+import styled from 'styled-components';
+
+const StyledSearchContainer = styled.div`
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  margin-bottom: 40px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledSearchBar = styled.div`
+  width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 const SearchBar = props => {
   return (
-    <div id="searchContainer">
-      <div id="searchBar">
+    <StyledSearchContainer>
+      <StyledSearchBar>
         <div className="searchSection">
           <i className="fab fa-instagram"></i>
           <span>|</span>
@@ -19,8 +38,8 @@ const SearchBar = props => {
           <i className="far fa-heart"></i>
           <i className="far fa-user"></i>
         </div>
-      </div>
-    </div>
+      </StyledSearchBar>
+    </StyledSearchContainer>
   );
 };
  
