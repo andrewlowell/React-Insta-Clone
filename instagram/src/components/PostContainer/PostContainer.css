@@ -1,0 +1,11 @@
+.postHeader img {
+  border-radius: 50%;
+  max-width: 40px;
+  margin-right: 10px;
+}
+.postComments {
+  padding: 20px;
+}
+.postHeader {
+  padding: 10px;
+}

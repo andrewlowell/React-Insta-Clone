@@ -1,0 +1,12 @@
+body {
+  background-color: #fafafa;
+}
+#postsContainer {
+  margin: 100px auto;
+  max-width: 600px;
+  background-color: white;
+}
+.fab, .fas, .far {
+  font-size: 30px;
+  padding: 5px;
+}
